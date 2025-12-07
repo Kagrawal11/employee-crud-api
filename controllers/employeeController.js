@@ -13,6 +13,7 @@ exports.createEmployee = async (req, res) => {
       await counter.save();
     }
 
+    // Always override ID -> auto generate
     req.body.id = counter.value;
 
     const emp = await Employee.create(req.body);
@@ -22,6 +23,7 @@ exports.createEmployee = async (req, res) => {
     return res.status(500).json({ msg: err.message });
   }
 };
+
 
 // Get all employees
 exports.getAllEmployees = async (req, res) => {

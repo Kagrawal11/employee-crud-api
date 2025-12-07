@@ -1,13 +1,18 @@
 const express = require("express");
+const {
+  createEmployee,
+  getAllEmployees,
+  getEmployeeById,
+  updateEmployee,
+  deleteEmployee
+} = require("../controllers/employeeController");
+
 const router = express.Router();
 
-const employeeController = require("../controllers/employeeController");
-
-// correct mapping
-router.post("/create", employeeController.createEmployee);
-router.get("/all", employeeController.getAllEmployees);
-router.get("/:id", employeeController.getEmployeeById);
-router.put("/update/:id", employeeController.updateEmployee);
-router.delete("/delete/:id", employeeController.deleteEmployee);
+router.post("/create", createEmployee);
+router.get("/all", getAllEmployees);
+router.get("/:id", getEmployeeById);
+router.put("/update/:id", updateEmployee);
+router.delete("/delete/:id", deleteEmployee);
 
 module.exports = router;
